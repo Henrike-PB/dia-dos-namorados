@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffe7e3;
+  position: relative; /* Adicionado para referenciar o posicionamento do coração */
+}
+
+.text {
+  font-size: 20px; /* Adicionado para o exemplo do texto */
+  text-align: center; /* Adicionado para o exemplo do texto */
+}
+
+.heart {
+  width: 100px;
+  height: 160px;
+  position: absolute;
+  top: calc(50% - 80px); /* Posiciona o coração no centro vertical */
+  left: calc(50% - 50px); /* Posiciona o coração no centro horizontal */
+  background-color: #e93d3d;
+  transform-origin: right bottom;
+  border-radius: 15px;
+  animation: heart 3s ease infinite alternate;
+}
+
+@keyframes heart {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(45deg);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+  }
+  100% {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    transform: rotate(45deg) scale(1.2);
+  }
+}
+
+.heart::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  transform-origin: left bottom;
+  background-color: #d62424;
+  position: absolute;
+  animation: heart_after 3s ease infinite alternate;
+}
+
+@keyframes heart_after {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-90deg) translateY(100px);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+  }
+  100% {
+    transform: rotate(-90deg) translateY(100px);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+  }
+}
+
+/* Adicionando media query para dispositivos móveis */
+@media only screen and (max-width: 600px) {
+  .heart {
+    width: 80px; /* Ajuste de tamanho para telas menores */
+    height: 128px; /* Ajuste de tamanho para telas menores */
+    top: calc(50% - 64px); /* Posicionamento vertical ajustado */
+    left: calc(50% - 40px); /* Posicionamento horizontal ajustado */
+  }
+}
